@@ -6,8 +6,6 @@ output.json
 
 .secret
 
-Italia/
 *.pyc
 
 logs/
-data/
