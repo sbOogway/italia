@@ -1,0 +1,43 @@
+[
+    {
+        "_id": {
+            "$oid": "69a1b64cfdfecd81ff19122b"
+        },
+        "Nome": "Italia",
+        "Nome completo": "Repubblica italiana",
+        "Nome ufficiale": "Repubblica italiana",
+        "Lingue ufficiali": "italiano[1]",
+        "Altre lingue": "Bilinguismo a livello locale, vedi lista",
+        "Capitale": "Roma",
+        "Forma di governo": "Repubblica parlamentare unitaria",
+        "Presidente della Repubblica": "Sergio Mattarella",
+        "Presidente del Consiglio dei ministri": "Giorgia Meloni",
+        "Indipendenza": "17 marzo 1861 (Proclamazione del Regno d'Italia)[2]",
+        "Proclamazione": "18 giugno 1946[3]",
+        "Ingresso nell'ONU": "14 dicembre 1955",
+        "Ingresso nell'UE": "25 marzo 1957 (membro fondatore)",
+        "Totale": "58\u00a0943\u00a0464 ab.\u00a0(1 gennaio 2025)\u00a0(25\u00ba)",
+        "% delle acque": "2,4%",
+        "Densit\u00e0": "195,22 ab./km\u00b2\u00a0(39\u00ba)",
+        "Nome degli abitanti": "italiani",
+        "Continente": "Europa[4]",
+        "Confini": "San Marino, Citt\u00e0 del Vaticano, Francia, Svizzera, Austria e Slovenia",
+        "Fuso orario": "UTC+1UTC+2 (ora legale)",
+        "Valuta": "euro",
+        "PIL (nominale)": "2\u00a0459\u00a0597[5] milioni di $ (2025 stima) (8\u00ba)",
+        "PIL pro capite (nominale)": "40\u00a0287[5] $ (2024 stima) (26\u00ba)",
+        "PIL (PPA)": "3\u00a0600\u00a0000[5] milioni di $ (2024 stima) (11\u00ba)",
+        "PIL pro capite (PPA)": "60\u00a0993[5] $ (2024 stima) (29\u00ba)",
+        "ISU (2023)": "0,915[6] (molto alto) (29\u00ba)",
+        "Fecondit\u00e0": "1,25 (2022)[7]",
+        "Consumo energetico": "5013,3 kWh/ab. anno",
+        "Codici ISO 3166": "IT, ITA, 380",
+        "TLD": ".it, .eu",
+        "Prefisso tel.": "+39[8]",
+        "Sigla autom.": "I",
+        "Lato di guida": "Destra (\u2193\u2191)",
+        "Inno nazionale": "Il Canto degli Italiani",
+        "Festa nazionale": "2 giugno",
+        "Stato precedente": "Regno d'Italia"
+    }
+]
