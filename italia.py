@@ -1,3 +1,5 @@
+# main file used for scraping
+
 import logging
 import re
 import time

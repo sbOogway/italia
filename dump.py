@@ -1,3 +1,7 @@
+# writes all data to the mongodb 
+#
+# early attempt of cleaning them, should be put more effort
+
 import json
 import os
 import re

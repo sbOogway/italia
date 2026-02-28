@@ -1,3 +1,6 @@
+# retrieves the files from mongodb and writes them in clean
+# format in appropriate directory
+
 import os
 from pathlib import Path
 
