@@ -15,6 +15,7 @@ THREAD_COUNT = 10
 file_write_counter = 0
 file_write_lock = Lock()
 
+# tor proxies
 proxies = {
     "http": "socks5h://127.0.0.1:9050",
     "https": "socks5h://127.0.0.1:9050",
