@@ -1,0 +1,13 @@
+.env
+
+query.txt
+
+output.json
+
+.secret
+
+Italia/
+*.pyc
+
+logs/
+data/
