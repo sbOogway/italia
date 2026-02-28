@@ -14,8 +14,7 @@ base = Path(__file__).parent / "data"
 load_dotenv(base.parent / ".env")
 
 client = MongoClient(os.getenv("MONGODB_URI", "mongodb://localhost:27017/"))
-db = client[os.getenv("MONGODB_DB", "wikipedia")]
-# collection = db["entities"]
+db = client[os.getenv("MONGODB_DB", "italia")]
 
 italy = base / "Italia" / entity_file
 regioni = list((base / "Italia").glob("*/entity.csv"))
@@ -31,15 +30,10 @@ print(len(comuni))
 
 
 def json_dump(file, collection):
-    # try:
     df = pd.read_csv(file, header=None)
     df = df[df[0] != df[1]]
-    # df = df[1:]
-    # print(df)
-    # exit(0)
     df.loc[0] = ["Nome", df.iloc[0, 0].split(" comune")[0]]
 
-    # print(df)
     df = df.dropna()
     obj = {}
     for k, v in zip(df[0], df[1]):
@@ -52,22 +46,14 @@ def json_dump(file, collection):
     else:
         numero_pulito = re.sub(r'[^\d]', '', abitanti.split('[')[0])
 
-        # Estrae la data tra parentesi
         data_estratta = re.search(r'\((.*?)\)', abitanti).group(1)
 
-
+        # more data cleaning should be done here
         obj["Abitanti"] = int(numero_pulito)
         obj["Abitanti data"] = data_estratta
 
-    # obj["source_file"] = str(file)
     collection.insert_one(obj)
     pprint(obj)
-    # except KeyError:
-    #     print(file)
-    #     print(df)
-    #     traceback.print_exc()
-    #     exit(10)
-
 
 json_dump(italy, db["stato"])
 for regione in regioni:
