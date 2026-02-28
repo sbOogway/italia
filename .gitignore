@@ -9,3 +9,5 @@ output.json
 *.pyc
 
 logs/
+
+*.tar.gz

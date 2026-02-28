@@ -1,5 +1,6 @@
 # italia
 Collezione di tutti gli enti territoriali italiani, ottenuti da wikipedia.
+Disponibili in formato json e csv.
 
 ## Miglioramenti da effettuare
 - Alcuni link di wikipedia sono rotti e risultano in pagine sbagliate.
@@ -15,3 +16,6 @@ Per fare girare i vari script con `uv` usa questa sintassi.
 `uv run python -m italia`
 `uv run python -m dump`
 `uv run python -m retrieve`
+
+## Release command
+`tar -czvf italia.tar.gz data/`
