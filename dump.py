@@ -14,8 +14,8 @@ from __init__ import entity_file, logger
 from dotenv import load_dotenv
 from pymongo import MongoClient
 
-base = Path(__file__).parent / "data"
-load_dotenv(base.parent / ".env")
+base = Path(__file__).parent / "data" / "raw"
+load_dotenv(base.parent.parent / ".env")
 
 client = MongoClient(os.getenv("MONGODB_URI", "mongodb://localhost:27017/"))
 db = client[os.getenv("MONGODB_DB", "italia")]
