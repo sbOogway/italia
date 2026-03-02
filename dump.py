@@ -33,7 +33,26 @@ print(len(province))
 print(len(comuni))
 
 
-def json_dump(file, collection):
+def dms_to_dd(dms_str):
+    regex = r"(\d+)°(\d+)′([\d.]+)″([NSEW])"
+    
+    parts = re.findall(regex, dms_str)
+    if len(parts) != 2:
+        return None 
+    
+    coords_decimal = []
+    for deg, mins, secs, direction in parts:
+        dd = float(deg) + float(mins)/60 + float(secs)/3600
+        if direction in ['S', 'W']:
+            dd = -dd
+        coords_decimal.append(dd)
+    
+    return {
+        "type": "Point",
+        "coordinates": [coords_decimal[1], coords_decimal[0]]
+    }
+
+def json_dump(file, collection, **kwargs):
     df = pd.read_csv(file, header=None)
     df = df[df[0] != df[1]]
     df.loc[0] = ["Nome", df.iloc[0, 0].split(" comune")[0]]
@@ -56,6 +75,12 @@ def json_dump(file, collection):
         obj["Abitanti"] = int(numero_pulito)
         obj["Abitanti data"] = data_estratta
 
+        if kwargs.get("coordinate_geojson", False):
+            try:
+                obj["Posizione"] = dms_to_dd(obj["Coordinate"])
+            except KeyError:
+                obj["Posizione"] = dms_to_dd(obj["Coordinate del capoluogo"])
+
     collection.insert_one(obj)
     pprint(obj)
 
@@ -67,4 +92,6 @@ for provincia in province:
     json_dump(provincia, db["province"])
 
 for comune in comuni:
-    json_dump(comune, db["comuni"])
+    json_dump(comune, db["comuni"], coordinate_geojson=True)
+
+logger.info("dump to db complete")
