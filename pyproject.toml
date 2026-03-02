@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
     "curl-cffi>=0.14.0",
+    "geopy>=2.4.1",
     "pandas>=3.0.1",
     "pymongo>=4.16.0",
     "python-dotenv>=1.2.2",

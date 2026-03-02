@@ -12,6 +12,7 @@ from pprint import pprint
 import pandas as pd
 from __init__ import entity_file, logger
 from dotenv import load_dotenv
+from geopy.point import Point
 from pymongo import MongoClient
 
 base = Path(__file__).parent / "data" / "raw"
@@ -33,23 +34,12 @@ print(len(province))
 print(len(comuni))
 
 
-def dms_to_dd(dms_str):
-    regex = r"(\d+)°(\d+)′([\d.]+)″([NSEW])"
-    
-    parts = re.findall(regex, dms_str)
-    if len(parts) != 2:
-        return None 
-    
-    coords_decimal = []
-    for deg, mins, secs, direction in parts:
-        dd = float(deg) + float(mins)/60 + float(secs)/3600
-        if direction in ['S', 'W']:
-            dd = -dd
-        coords_decimal.append(dd)
+def coords_to_dd(coords_str):
+    p = Point(coords_str)
     
     return {
         "type": "Point",
-        "coordinates": [coords_decimal[1], coords_decimal[0]]
+        "coordinates": [p.latitude, p.longitude]
     }
 
 def json_dump(file, collection, **kwargs):
@@ -77,9 +67,9 @@ def json_dump(file, collection, **kwargs):
 
         if kwargs.get("coordinate_geojson", False):
             try:
-                obj["Posizione"] = dms_to_dd(obj["Coordinate"])
+                obj["Posizione"] = coords_to_dd(obj["Coordinate"])
             except KeyError:
-                obj["Posizione"] = dms_to_dd(obj["Coordinate del capoluogo"])
+                obj["Posizione"] = coords_to_dd(obj["Coordinate del capoluogo"])
 
     collection.insert_one(obj)
     pprint(obj)
