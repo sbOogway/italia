@@ -1,17 +1,15 @@
 # main file used for scraping
 
-import logging
 import re
-import time
-import uuid
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor
 from io import StringIO
 from pathlib import Path
 from threading import Lock
 
 import pandas as pd
-from __init__ import entity_file, get_ninja_scraper, logger
 from curl_cffi import requests
+
+from __init__ import entity_file, get_ninja_scraper, logger
 
 THREAD_COUNT = 10
 file_write_counter = 0
